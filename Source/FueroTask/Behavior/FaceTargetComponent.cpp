@@ -16,15 +16,13 @@ void UFaceTargetComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	const auto parentLocation=GetOwner()->GetActorLocation();
-	const auto parentRotation=GetOwner()->GetActorRotation();
-	const auto targetPosition=ActiveTarget->GetActorLocation();
+	const FVector parentLocation = GetOwner()->GetActorLocation();
+	const FRotator parentRotation = GetOwner()->GetActorRotation();
+	const FVector targetPosition = ActiveTarget->GetActorLocation();
 
-	const auto requiredRotation=UKismetMathLibrary::FindLookAtRotation(parentLocation,targetPosition);
+	const FRotator requiredRotation = UKismetMathLibrary::FindLookAtRotation(parentLocation, targetPosition);
 	
-	GetOwner()->SetActorRotation(UKismetMathLibrary::RInterpTo_Constant(parentRotation,requiredRotation,DeltaTime,RotationRate));
-	
-	
+	GetOwner()->SetActorRotation(UKismetMathLibrary::RInterpTo_Constant(parentRotation,requiredRotation,DeltaTime,RotationRate));	
 }
 
 void UFaceTargetComponent::StartRotating(AActor* Target)
@@ -34,8 +32,7 @@ void UFaceTargetComponent::StartRotating(AActor* Target)
 }
 
 void UFaceTargetComponent::StopRotating()
-{
-	
+{	
 	SetComponentTickEnabled(false);
 }
 

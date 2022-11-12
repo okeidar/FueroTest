@@ -26,7 +26,6 @@ ABaseProjectile::ABaseProjectile(const class FObjectInitializer& ObjectInitializ
 	ProjectileMovement->bShouldBounce = true;
 
 	InitialLifeSpan = 3.0f;
-
 }
 
 

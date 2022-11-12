@@ -15,8 +15,6 @@ class AFueroTaskCharacter : public ACharacter
 {
 	GENERATED_BODY()
 	
-
-
 public:
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Input)

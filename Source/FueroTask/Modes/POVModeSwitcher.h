@@ -7,8 +7,6 @@
 #include "Components/ActorComponent.h"
 #include "POVModeSwitcher.generated.h"
 
-enum ESupportedModes;
-
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class FUEROTASK_API UPOVModeSwitcher : public UActorComponent
 {
@@ -20,8 +18,8 @@ public:
 
 	/**
 	 * @brief Scans the owner for components and attached actors that implement @IModeSwitcher and calls switch mode on them.
-	 * new components/actors added after the first call will not be accounted.
 	 * @param NewMode The mode to change to
+	 * @warning new components/actors added after the first call will not be accounted.
 	 */
 	UFUNCTION(BlueprintCallable, Category=ModeSwitch)
 	void SwitchModeToAllObjects(const ESupportedModes NewMode);

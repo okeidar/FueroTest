@@ -16,23 +16,22 @@ class FUEROTASK_API ABaseProjectile : public AActor
 
 public:	
 	
-	UPROPERTY(VisibleDefaultsOnly,BlueprintReadOnly, Category=Projectile)
-	USphereComponent* CollisionComponent = nullptr;
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Movement)
-	UProjectileMovementComponent* ProjectileMovement = nullptr;
-
-	/**
-	 * @brief Damage type this projectile inflicts.
-	 */
-	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly, Category = Config)
-	TSubclassOf<UDamageType> DamageType;
-
-	
 	ABaseProjectile(const class FObjectInitializer& ObjectInitializer);
 	
 	UFUNCTION(BlueprintCallable,BlueprintNativeEvent)
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 	void OnHit_Implementation(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+private:
+
+	UPROPERTY(VisibleDefaultsOnly,BlueprintReadOnly, Category=Projectile, meta=(AllowPrivateAccess=true))
+	USphereComponent* CollisionComponent = nullptr;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Movement, meta=(AllowPrivateAccess=true))
+	UProjectileMovementComponent* ProjectileMovement = nullptr;
+
+	/** Damage type this projectile inflicts. */ 
+	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly, Category = Config, meta=(AllowPrivateAccess=true))
+	TSubclassOf<UDamageType> DamageType;
 
 };

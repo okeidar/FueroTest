@@ -9,7 +9,7 @@ UConditionRequirementComponent::UConditionRequirementComponent()
 	PrimaryComponentTick.bCanEverTick = false;
 }
 
-bool UConditionRequirementComponent::IsConditionMet(AActor* context) const
+bool UConditionRequirementComponent::IsConditionMet(const AActor* context) const
 {
 	return true;
 }

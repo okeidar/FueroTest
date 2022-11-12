@@ -9,30 +9,25 @@
 
 class UCameraComponent;
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class FUEROTASK_API UCameraSwitcherComponent : public UActorComponent, public IModeSwitcher
 {
 	GENERATED_BODY()
 
-public:	
+public:
+		
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Camera)
+	UCameraComponent* ThirdPersonCamera = nullptr;
 
-	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = Camera)
-	 UCameraComponent* ThirdPersonCamera = nullptr;
-	
-	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = Camera)
-	 UCameraComponent* FirstPersonCamera = nullptr;
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Camera)
+	UCameraComponent* FirstPersonCamera = nullptr;
 	
 	UCameraSwitcherComponent();
-	
+
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	void SwitchMode(ESupportedModes NewMode);
-	virtual void SwitchMode_Implementation(ESupportedModes NewMode) override;
-	
-	
-	
-	virtual void BeginPlay() override;	
+	void SwitchMode(const ESupportedModes NewMode);
+	virtual void SwitchMode_Implementation(const ESupportedModes NewMode) override;
 
-		
+
+	virtual void BeginPlay() override;
 };
-

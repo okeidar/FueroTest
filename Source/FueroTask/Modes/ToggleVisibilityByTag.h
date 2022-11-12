@@ -15,15 +15,11 @@ class FUEROTASK_API UToggleVisibilityByTag : public UActorComponent,public IMode
 
 public:
 	
-	/**
-	 * @brief Tag to search and activate when switching to FPS mode
-	 */
+	/** Tag to search and activate when switching to FPS mode. */	 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category=Config)
 	FName FPSTagName = FName("FPS");
 
-	/**
-	 * @brief Tag to search and activate when switching to TPS mode
-	 */
+	/** Tag to search and activate when switching to TPS mode. */	 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category=Config)
 	FName TPSTagName = FName("TPS");
 
@@ -31,8 +27,8 @@ public:
 	UToggleVisibilityByTag();
 	
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	void SwitchMode(ESupportedModes NewMode);
-	virtual void SwitchMode_Implementation(ESupportedModes NewMode) override;
+	void SwitchMode(const ESupportedModes NewMode);
+	virtual void SwitchMode_Implementation(const ESupportedModes NewMode) override;
 	
 protected:
 	

@@ -8,9 +8,7 @@
 #include "TargetPlayerConditions.generated.h"
 
 
-/*
- * Checks if the owner is in the players viewport
-*/
+/** Checks if the owner is in the players viewport. */
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class FUEROTASK_API UInPlayerViewportCondition : public UConditionRequirementComponent
 {
@@ -20,12 +18,10 @@ public:
 
 	UInPlayerViewportCondition();
 
-	virtual bool IsConditionMet(AActor* context=nullptr) const override;
+	virtual bool IsConditionMet(const AActor* context=nullptr) const override;
 };
 
-/*
- * Checks if the owner has LOS to a target
-*/
+/** Checks if the owner has LOS to a target. */
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class FUEROTASK_API ULOSToTargetCondition : public UConditionRequirementComponent
 {
@@ -33,19 +29,18 @@ class FUEROTASK_API ULOSToTargetCondition : public UConditionRequirementComponen
 
 public:
 
-	UPROPERTY(EditAnywhere, Category=Config)
-	TEnumAsByte<ECollisionChannel> VisibilityTraceChannel= ECC_Visibility;
-
-
 	ULOSToTargetCondition();
 
-	virtual bool IsConditionMet(AActor* context=nullptr) const override;
+	virtual bool IsConditionMet(const AActor* context=nullptr) const override;
+
+private:
+	
+	UPROPERTY(EditAnywhere, Category=Config, meta=(AllowPrivateAccess=true))
+	TEnumAsByte<ECollisionChannel> VisibilityTraceChannel = ECC_Visibility;
 };
 
 
-/*
- * Checks if the context has a tag
-*/
+/** Checks if the context has a tag. */
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class FUEROTASK_API UContextHasGameplayTagCondition : public UConditionRequirementComponent
 {
@@ -53,11 +48,12 @@ class FUEROTASK_API UContextHasGameplayTagCondition : public UConditionRequireme
 
 public:
 
-	UPROPERTY(EditAnywhere, Category=Config)
-	FGameplayTag TagToCheck;
-
-	
 	UContextHasGameplayTagCondition();
 	
-	virtual bool IsConditionMet(AActor* context=nullptr) const override;
+	virtual bool IsConditionMet(const AActor* context=nullptr) const override;
+
+private:
+
+	UPROPERTY(EditAnywhere, Category=Config, meta=(AllowPrivateAccess=true))
+	FGameplayTag TagToCheck;	
 };

@@ -7,7 +7,7 @@
 #include "IModeSwitcher.generated.h"
 
 UENUM(BlueprintType)
-enum ESupportedModes
+enum class ESupportedModes: uint8
 {	
 	ESM_TPS UMETA(DisplayName = "Third Person POV"),
 	ESM_FPS UMETA(DisplayName = "First Person POV")
@@ -29,13 +29,11 @@ class FUEROTASK_API IModeSwitcher
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
+	
 	/**
 	 * @brief Switching POV mode
 	 * @param NewMode @ESupportedMode mode to switch to
 	 */
 	UFUNCTION(BlueprintNativeEvent , BlueprintCallable)		
-	void SwitchMode(ESupportedModes NewMode);
-
-private:
-	TArray<UActorComponent*> OwnerModeSupportingComponents;
+	void SwitchMode(const ESupportedModes NewMode);
 };

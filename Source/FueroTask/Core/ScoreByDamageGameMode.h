@@ -15,16 +15,16 @@ class AScoreByDamageGameMode : public AGameModeBase
 	GENERATED_BODY()
 
 public:
-
+	
 	UPROPERTY(BlueprintAssignable, BlueprintCallable, EditAnywhere, Category=Score)
 	FOnScoreUpdated OnScoreUpdated;
 
-	
+
 	AScoreByDamageGameMode();
-	
-	UFUNCTION(BlueprintCallable,BlueprintPure, Category=Score)
-	FORCEINLINE int GetScore() const{ return PlayerScore; }
-	
+
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category=Score)
+	FORCEINLINE int GetScore() const { return PlayerScore; }
+
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category=Score)
 	void EnemyDestroyed(const UDamageType* DestroyingDamage);
 

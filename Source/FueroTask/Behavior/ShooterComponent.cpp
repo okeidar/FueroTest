@@ -14,12 +14,12 @@ UShooterComponent::UShooterComponent()
 
 void UShooterComponent::Shoot()
 {
-	UWorld* const World = GetWorld();	
+	UWorld* const World = GetWorld();
 	if (!World) return;
 
 	//cooldown is setting the time of the next available shot and comparing the game time to it
-	float gameTime=UGameplayStatics::GetTimeSeconds(World);
-	if(gameTime<NextShotTime) return;
+	float gameTime = UGameplayStatics::GetTimeSeconds(World);
+	if (gameTime < NextShotTime) return;
 
 	const FRotator SpawnRotation = GetOwner()->GetActorRotation();
 	const FVector SpawnLocation = GetOwner()->GetActorLocation() + SpawnRotation.RotateVector(ShotOriginOffset);
@@ -29,5 +29,5 @@ void UShooterComponent::Shoot()
 
 	World->SpawnActor<ABaseProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
 
-	NextShotTime=gameTime+CooldownSeconds;
+	NextShotTime = gameTime + CooldownSeconds;
 }

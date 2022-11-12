@@ -15,13 +15,6 @@ class FUEROTASK_API UWeaponMode : public UActorComponent, public ICanFire
 	GENERATED_BODY()
 
 public:
-
-	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = Config)
-	TSubclassOf<ABaseProjectile> ProjectileClass;	
-
-	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = Config)
-	FVector ShotOriginOffset;
-
 	
 	UWeaponMode();	
 
@@ -32,4 +25,12 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void EndFire();
 	virtual void EndFire_Implementation() override;
+
+private:
+	
+		UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = Config, meta=(AllowPrivateAccess=true))
+    	TSubclassOf<ABaseProjectile> ProjectileClass;	
+    
+    	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = Config, meta=(AllowPrivateAccess=true))
+    	FVector ShotOriginOffset;
 };

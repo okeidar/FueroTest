@@ -12,12 +12,8 @@ class FUEROTASK_API UFaceTargetComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:
-	
-	UPROPERTY(EditAnywhere, Category = Config)
-	float RotationRate=20.f;
+public:	
 
-	
 	UFUNCTION(BlueprintCallable, Category = FaceTarget)
 	void StartRotating(AActor* Target);
 	
@@ -33,6 +29,9 @@ public:
 	                           FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
+	
+	UPROPERTY(EditAnywhere, Category = Config, meta=(AllowPrivateAccess=true))
+	float RotationRate=20.f;
 	
 	UPROPERTY()
 	AActor* ActiveTarget = nullptr;

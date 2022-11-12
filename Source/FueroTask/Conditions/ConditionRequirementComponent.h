@@ -6,7 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "ConditionRequirementComponent.generated.h"
 
-
+/** Base component to implement condition logics over an actor context. */
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class FUEROTASK_API UConditionRequirementComponent : public UActorComponent
 {
@@ -15,7 +15,7 @@ class FUEROTASK_API UConditionRequirementComponent : public UActorComponent
 public:
 
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = Condition)
-	virtual bool IsConditionMet(AActor* context=nullptr) const ;
+	virtual bool IsConditionMet(const AActor* context=nullptr) const ;
 	
 	
 	UConditionRequirementComponent();

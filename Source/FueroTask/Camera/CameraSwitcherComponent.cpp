@@ -11,9 +11,9 @@ UCameraSwitcherComponent::UCameraSwitcherComponent()
 
 }
 
-void UCameraSwitcherComponent::SwitchMode_Implementation(ESupportedModes NewMode)
+void UCameraSwitcherComponent::SwitchMode_Implementation(const ESupportedModes NewMode)
 {	
-	if(NewMode==ESM_FPS)
+	if(NewMode== ESupportedModes::ESM_FPS)
 	{
 		ThirdPersonCamera->SetActive(false);
 		FirstPersonCamera->SetActive(true);

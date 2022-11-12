@@ -8,28 +8,28 @@
 #include "ShooterComponent.generated.h"
 
 
-UCLASS(ClassGroup=(Custom),Blueprintable, BlueprintType, meta=(BlueprintSpawnableComponent))
+UCLASS(ClassGroup=(Custom), Blueprintable, BlueprintType, meta=(BlueprintSpawnableComponent))
 class FUEROTASK_API UShooterComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:
-
-	UPROPERTY(EditDefaultsOnly, Category = Config)
-	TSubclassOf<ABaseProjectile> ProjectileClass=nullptr;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
-	FVector ShotOriginOffset= FVector {0,0,0};
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Config)
-	float CooldownSeconds=1.3;
-
-
+	
 	UShooterComponent();
 
 	UFUNCTION(BlueprintCallable, Category = Shooter)
 	void Shoot();
 
 private:
+
+	UPROPERTY(EditDefaultsOnly, Category = Config, meta=(AllowPrivateAccess=true))
+	TSubclassOf<ABaseProjectile> ProjectileClass = nullptr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config, meta=(AllowPrivateAccess=true))
+	FVector ShotOriginOffset = FVector{0, 0, 0};
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Config, meta=(AllowPrivateAccess=true))
+	float CooldownSeconds = 1.3;
+	
 	float NextShotTime = 0;
 };

@@ -9,9 +9,9 @@ UToggleVisibilityByTag::UToggleVisibilityByTag()
 	PrimaryComponentTick.bCanEverTick = false;
 }
 
-void UToggleVisibilityByTag::SwitchMode_Implementation(ESupportedModes NewMode)
+void UToggleVisibilityByTag::SwitchMode_Implementation(const ESupportedModes NewMode)
 {
-	const bool IsFps=NewMode==ESM_FPS;
+	const bool IsFps=NewMode== ESupportedModes::ESM_FPS;
 	for (const auto FPSComponent : FPSComponents)
 	{
 		FPSComponent->SetVisibility(IsFps);
@@ -27,7 +27,7 @@ void UToggleVisibilityByTag::BeginPlay()
 {
 	Super::BeginPlay();
 
-	auto foundItems=GetOwner()->GetComponentsByTag(USceneComponent::StaticClass(),FPSTagName);
+	TArray<UActorComponent*> foundItems = GetOwner()->GetComponentsByTag(USceneComponent::StaticClass(), FPSTagName);
 	for (const auto FoundItem : foundItems)
 	{
 		FPSComponents.Add(Cast<USceneComponent>(FoundItem));

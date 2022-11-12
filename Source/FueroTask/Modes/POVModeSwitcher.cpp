@@ -27,11 +27,11 @@ void UPOVModeSwitcher::SwitchModeToAllObjects(const ESupportedModes NewMode)
 
 void UPOVModeSwitcher::SearchForSupportingObjects()
 {
-	auto foundSupportingObjects =GetOwner()->GetComponentsByInterface(UModeSwitcher::StaticClass());
+	TArray<UActorComponent*> foundSupportingObjects = GetOwner()->GetComponentsByInterface(UModeSwitcher::StaticClass());
 	
 	for (const auto& foundSupportingObject : foundSupportingObjects)
 	{
-		auto itemAsObject=Cast<UObject>(foundSupportingObject);
+		UObject* itemAsObject = Cast<UObject>(foundSupportingObject);
 		ParentSupportingObjects.Add(itemAsObject);
 	}
 	
@@ -42,8 +42,7 @@ void UPOVModeSwitcher::SearchForSupportingObjects()
 	{
 		if(attachedActor->Implements<UModeSwitcher>())
 		{
-			auto itemAsObject=Cast<UObject>(attachedActor);
-
+			UObject* itemAsObject = Cast<UObject>(attachedActor);
 			ParentSupportingObjects.Add(itemAsObject);
 		}
 	}
